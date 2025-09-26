@@ -42,13 +42,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fluid Mechanics PhD Portfolio - Consulting, Tutoring, and Research in CFD and Fluid Dynamics">
-    <meta name="keywords" content="fluid mechanics, CFD, computational fluid dynamics, consulting, tutoring">
+    <meta name="description" content="Fluid Mechanics PhD Portfolio - Expert Consulting, Tutoring, and Research in CFD and Fluid Dynamics">
+    <meta name="keywords" content="fluid mechanics, CFD, computational fluid dynamics, turbulence modeling, consulting, tutoring">
     <meta name="author" content="Your Name">
     <title>Fluid Mechanics Expertise | Your Name</title>
+    <!-- Google Analytics (replace UA-XXXXX-Y with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -57,17 +67,20 @@
         header {
             background: #1a3c6d;
             color: #fff;
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
         }
         nav {
             background: #333;
             color: #fff;
             padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav a {
             color: #fff;
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             text-decoration: none;
             font-weight: bold;
         }
@@ -81,34 +94,88 @@
         }
         .hero {
             text-align: center;
-            padding: 2rem 0;
-            background: #e0e7ff;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #e0e7ff, #c3daff);
         }
         .hero h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
         }
-        .portfolio, .blog, .contact {
-            margin: 2rem 0;
-        }
-        .portfolio-item, .blog-post {
-            background: #fff;
-            padding: 1rem;
-            margin: 1rem 0;
+        .hero .cta-button {
+            background: #1a3c6d;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero .cta-button:hover {
+            background: #153058;
+        }
+        .about, .portfolio, .services, .testimonials, .blog, .contact {
+            margin: 3rem 0;
+        }
+        .about img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .portfolio-item, .testimonial, .blog-post {
+            background: #fff;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .portfolio-item img, .blog-post img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .services table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .services th, .services td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: left;
+        }
+        .services th {
+            background: #1a3c6d;
+            color: #fff;
+        }
+        .services .book-now {
+            background: #1a3c6d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .services .book-now:hover {
+            background: #153058;
+        }
+        .testimonials .testimonial {
+            font-style: italic;
+        }
+        .testimonials .author {
+            font-weight: bold;
+            margin-top: 0.5rem;
         }
         .contact form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
         }
         .contact input, .contact textarea {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 1rem;
         }
         .contact button {
             background: #1a3c6d;
@@ -117,26 +184,81 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
         }
         .contact button:hover {
             background: #153058;
         }
+        .contact .promise {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+        }
         footer {
             background: #333;
             color: #fff;
+            padding: 1.5rem;
             text-align: center;
-            padding: 1rem;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        footer a:hover {
+            color: #ddd;
+        }
+        .newsletter form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .newsletter input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+        .newsletter button {
+            background: #1a3c6d;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background: #153058;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a3c6d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: none;
+        }
+        .back-to-top.show {
+            display: block;
         }
         @media (max-width: 768px) {
             .hero h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             nav a {
                 display: block;
                 margin: 0.5rem 0;
+            }
+            .services table {
+                font-size: 0.9rem;
+            }
+            .about img {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -148,55 +270,144 @@
     </header>
     <nav>
         <a href="#home">Home</a>
+        <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
     </nav>
     <div class="container">
         <section id="home" class="hero">
-            <h2>Welcome to My Fluid Mechanics Portfolio</h2>
-            <p>PhD student specializing in computational fluid dynamics, turbulence, and fluid mechanics applications. Available for consulting, tutoring, and collaborations.</p>
+            <h2>Expert Fluid Mechanics Solutions</h2>
+            <p>PhD candidate specializing in computational fluid dynamics, turbulence, and multiphase flows. Hire me for consulting, tutoring, or custom simulations.</p>
+            <a href="#services" class="cta-button">View Services</a>
+            <a href="#portfolio" class="cta-button">Explore Portfolio</a>
         </section>
+
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <img src="https://via.placeholder.com/150" alt="Your Name Profile Photo">
+            <p>I'm a PhD candidate at [Your University] researching computational fluid dynamics with a focus on turbulence modeling. With 5+ publications in journals like <i>Journal of Fluid Mechanics</i> and expertise in OpenFOAM, Ansys Fluent, and MATLAB, I offer tailored solutions for industry and academia. Member of ASME and presented at APS DFD 2024.</p>
+            <p><a href="https://yourwebsite.com/resume.pdf" download>Download My CV</a></p>
+            <p><strong>Skills:</strong> CFD (OpenFOAM, Ansys Fluent), MATLAB, Python, Experimental Fluid Mechanics, Turbulence Modeling</p>
+        </section>
+
         <section id="portfolio" class="portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio-item">
-                <h3>CFD Simulation of Turbulent Flows</h3>
-                <p>Developed a model using OpenFOAM to simulate turbulent flow in a pipe, achieving 95% accuracy in predicting drag. <a href="#">View Details</a></p>
+                <h3>CFD Simulation of Turbulent Pipe Flow</h3>
+                <img src="https://via.placeholder.com/600x300?text=CFD+Simulation" alt="CFD Simulation">
+                <p>Developed a model in OpenFOAM to simulate turbulent flow in a pipe, reducing drag by 15%. Validated against experimental data with 95% accuracy. <a href="https://github.com/yourusername/pipe-flow">View Code</a></p>
             </div>
             <div class="portfolio-item">
                 <h3>Multiphase Flow Experiment</h3>
-                <p>Conducted lab experiments on gas-liquid interactions, published in Journal of Fluid Mechanics. <a href="#">Read Paper</a></p>
+                <img src="https://via.placeholder.com/600x300?text=Multiphase+Flow" alt="Multiphase Flow">
+                <p>Conducted experiments on gas-liquid interactions, published in <i>Journal of Fluid Mechanics</i>. Improved mixing efficiency by 20%. <a href="https://doi.org/yourpaper">Read Paper</a></p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Wind Turbine Optimization</h3>
+                <img src="https://via.placeholder.com/600x300?text=Wind+Turbine" alt="Wind Turbine">
+                <p>Optimized blade design using Ansys Fluent, increasing power output by 10%. Presented at APS DFD 2024. <a href="#">View Presentation</a></p>
             </div>
         </section>
+
+        <section id="services" class="services">
+            <h2>Services</h2>
+            <table>
+                <tr>
+                    <th>Service</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Book</th>
+                </tr>
+                <tr>
+                    <td>CFD Consulting</td>
+                    <td>Custom simulations for aerospace, energy, or automotive applications</td>
+                    <td>$100/hour</td>
+                    <td><a href="https://calendly.com/yourusername/consulting" class="book-now">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>Tutoring</td>
+                    <td>1:1 sessions on fluid mechanics, CFD, or MATLAB</td>
+                    <td>$50/session</td>
+                    <td><a href="https://calendly.com/yourusername/tutoring" class="book-now">Book Now</a></td>
+                </tr>
+                <tr>
+                    <td>Simulation Templates</td>
+                    <td>Pre-built CFD models for OpenFOAM or Fluent</td>
+                    <td>$200/template</td>
+                    <td><a href="https://gumroad.com/yourusername" class="book-now">Purchase</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+                <p>"Your Name's CFD expertise saved us weeks of work on our project. Highly professional!"</p>
+                <p class="author">Dr. Jane Smith, Aerospace Engineer</p>
+            </div>
+            <div class="testimonial">
+                <p>"The tutoring sessions on Navier-Stokes were clear and insightful. I aced my exam!"</p>
+                <p class="author">John Doe, MS Student</p>
+            </div>
+            <div class="testimonial">
+                <p>"Collaborated on a turbulence model—results were published in a top journal!"</p>
+                <p class="author">Prof. Alan Brown, [Your University]</p>
+            </div>
+        </section>
+
         <section id="blog" class="blog">
             <h2>Blog</h2>
             <div class="blog-post">
                 <h3>Understanding Navier-Stokes in Everyday Life</h3>
-                <p>Explaining how fluid dynamics governs weather, aviation, and more. <a href="#">Read More</a></p>
+                <img src="https://via.placeholder.com/600x300?text=Navier-Stokes" alt="Navier-Stokes">
+                <p>Explore how fluid dynamics governs weather, aviation, and more. <a href="https://yourbloglink.com/navier-stokes">Read More</a></p>
             </div>
             <div class="blog-post">
-                <h3>Tips for Mastering CFD Software</h3>
-                <p>A beginner's guide to using Ansys Fluent effectively. <a href="#">Read More</a></p>
+                <h3>Top 5 CFD Pitfalls and How to Avoid Them</h3>
+                <img src="https://via.placeholder.com/600x300?text=CFD+Pitfalls" alt="CFD Pitfalls">
+                <p>A guide to mastering CFD software like Ansys Fluent. <a href="https://yourbloglink.com/cfd-pitfalls">Read More</a></p>
+            </div>
+            <div class="blog-post">
+                <h3>Free CFD Cheat Sheet</h3>
+                <img src="https://via.placeholder.com/600x300?text=CFD+Cheat+Sheet" alt="CFD Cheat Sheet">
+                <p>Download my free guide to CFD best practices. <a href="https://gumroad.com/yourusername/cheatsheet">Download Now</a></p>
             </div>
         </section>
+
         <section id="contact" class="contact">
             <h2>Contact Me</h2>
+            <p class="promise">I respond to all inquiries within 24 hours.</p>
             <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </div>
     <footer>
-        <p>&copy; 2025 Your Name. All rights reserved. | <a href="https://linkedin.com/in/yourprofile" style="color: #fff;">LinkedIn</a> | <a href="https://x.com/yourprofile" style="color: #fff;">X</a></p>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>
+            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> |
+            <a href="https://x.com/yourprofile">X</a> |
+            <a href="https://researchgate.net/profile/yourprofile">ResearchGate</a> |
+            <a href="/privacy.html">Privacy Policy</a>
+        </p>
+        <div class="newsletter">
+            <form action="https://yourmailchimpurl.com" method="POST">
+                <input type="email" name="email" placeholder="Join my newsletter" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
     </footer>
+    <a href="#home" class="back-to-top" id="back-to-top">Back to Top</a>
     <script>
-        // Basic form submission handling
+        // Contact form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Formspree handles submission; replace with your Formspree ID
             fetch(this.action, {
                 method: 'POST',
                 body: new FormData(this),
@@ -209,6 +420,16 @@
                     alert('Error sending message. Please try again.');
                 }
             });
+        });
+
+        // Back-to-top button visibility
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
         });
     </script>
 </body>
